@@ -1,0 +1,88 @@
+{% extends 'request/main.html' %}
+
+{% block content %}
+<script src="/static/js/main.js"></script>
+<section>
+    <div class="container py-4" style="margin-top: 15px;" >
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          <div class="card-body" id="allofthem">
+              
+            <div style="input-group" >
+
+              <div >
+                <label>Grade</label>
+                <div class="input-group">
+                    
+                    <select name="grade" class="custom-select" style="max-width:35%;" id="grade" onchange="update()" required>
+                      <option value="8">Prep</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                    </select>
+                </div>
+              </div>
+              
+              <div>
+                <label>Lessons</label>
+                <div class="input-group">
+                    <select name="lessons" style="max-width:35%;" class="custom-select" id="lessons" required>
+                          
+                      <script>
+                        function update() {
+                          var select = document.getElementById('grade');
+                          var value = select.options[select.selectedIndex].value;
+                                  
+                          const prep = ['Mathematic', 'English', 'Science', 'Turkish']
+                          const grade9 = ['Mathematic', 'Chemistry', 'Physic', 'Biology', 'English', 'Turkish' ,'History', 'Geography']
+                          const grade10 = ['Mathematic', 'Chemistry', 'Physic', 'Biology', 'English', 'Turkish' ,'History', 'Geography']
+                          const grade11 = ['AP Calclus AB', 'AP Physic 1']
+                          var options_str = "";
+                              
+                          if (value == 8){
+                            prep.forEach(function(lesson){
+                                options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                          });
+                          } else if (value == 9){
+                            grade9.forEach(function(lesson){
+                            options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                          });
+                          } else if (value == 10) {
+                            grade10.forEach(function(lesson){
+                            options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                          });
+                          } else if (value == 11) {
+                            grade11.forEach(function(lesson){
+                            options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                            });
+                          }
+                          var lesson_str = document.getElementById('lessons');
+                          lesson_str.innerHTML = options_str;
+                        }
+                                
+                        </script>
+                    </select>
+                </div>
+              </div>
+
+              
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <button onclick="fetchData()" class="btn bg-gradient-dark w-100">Search</button>
+              </div>
+            </div>
+            <br>
+            <h6 style="display: {% if post == '1' %} inline {% endif %} none ; color: green; " >Your message is sent!</h6>
+
+            <div id="erenn">
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock content %}
