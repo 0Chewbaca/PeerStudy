@@ -1,0 +1,112 @@
+{% extends 'request/main.html' %}
+
+{% block content %}
+
+<body onload="update()">
+
+<section>
+    <div class="container py-4" style="margin-top: 0px;" >
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          <h3 class="text-center">Apply for the Tutor!</h3>
+          <form role="form" id="tutor-form" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="card-body">
+              
+                <div class="row">
+                <div class="col-md-6">
+                  <label>First Name</label>
+                  <div class="input-group mb-4">
+                    <input name="fname" class="form-control" placeholder="" aria-label="First Name..." type="text" required>
+                  </div>
+                </div>
+                <div class="col-md-6 ps-2">
+                  <label>Last Name</label>
+                  <div class="input-group">
+                    <input name="lname" type="text" class="form-control" placeholder="" aria-label="Last Name..." required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label>Email Address</label>
+                <div class="input-group">
+                  <input name="email" type="email" class="form-control" placeholder="" required>
+                </div>
+              </div>
+            
+              <div>
+                <label>Grade</label>
+                <div class="input-group">
+                
+                    <select name="grade" class="custom-select" id="grade" onchange="update()" required>
+                      <option value="8">Prep</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                    </select>
+                  </div>
+              </div>
+              
+              <br>
+              <div >
+                <label>Lessons</label>
+                <div class="input-group" >
+                
+                    <select name="lessons" class="custom-select" id="lessons" required>
+                        
+                        <script>
+                            function update() {
+                                var select = document.getElementById('grade');
+                                var value = select.options[select.selectedIndex].value;
+                                
+                                const prep = ['Mathematic', 'English', 'Science', 'Turkish']
+                                const grade9 = ['Mathematic', 'Chemistry', 'Physic', 'Biology', 'English', 'Turkish' ,'History', 'Geography']
+                                const grade10 = ['Mathematic', 'Chemistry', 'Physic', 'Biology', 'English', 'Turkish' ,'History', 'Geography']
+                                const grade11 = ['AP Calclus AB', 'AP Physic 1']
+                                var options_str = "";
+                            
+                                if (value == 8){
+                                    prep.forEach(function(lesson){
+                                        options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                                    });
+                                } else if (value == 9){
+                                    grade9.forEach(function(lesson){
+                                        options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                                    });
+                                } else if (value == 10) {
+                                    grade10.forEach(function(lesson){
+                                        options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                                    });
+                                } else if (value == 11) {
+                                    grade11.forEach(function(lesson){
+                                        options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                                    });
+                                }
+                                var lesson_str = document.getElementById('lessons');
+                                lesson_str.innerHTML = options_str;
+                            }
+                              
+                          </script>
+                    </select>
+                  </div>
+              </div>
+              
+
+              
+
+              <div cwlass="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn bg-gradient-dark w-100">Apply</button>
+                </div>
+              </div>
+              <br>
+              <h6 style="display: {% if post == '1' %} inline {% endif %} none ; color: green; " >Your application has been created!</h6>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>    
+
+{% endblock content %}

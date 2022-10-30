@@ -1,0 +1,14 @@
+.active {
+    color:rgba(174, 217, 255, 0.979) !important;
+}
+
+.about {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
+}
+
+.about2 {
+    font-size: 30px;
+    font-weight:lighter;
+}

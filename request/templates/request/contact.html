@@ -1,0 +1,52 @@
+{% extends 'request/main.html' %}
+
+{% block content %}
+
+<section>
+    <div class="container py-4" style="margin-top: 15px;" >
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          <h3 class="text-center">Contact us</h3>
+          <form role="form" id="contact-form" method="post" autocomplete="off">
+            {% csrf_token %}
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>First Name</label>
+                  <div class="input-group mb-4">
+                    <input name="fname" class="form-control" placeholder="" aria-label="First Name..." type="text" required>
+                  </div>
+                </div>
+                <div class="col-md-6 ps-2">
+                  <label>Last Name</label>
+                  <div class="input-group">
+                    <input name="lname" type="text" class="form-control" placeholder="" aria-label="Last Name..." required>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-4">
+                <label>Email Address</label>
+                <div class="input-group">
+                  <input name="email" type="email" class="form-control" placeholder="" required>
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label>Your message</label>
+                <textarea name="message" class="form-control" id="message" rows="4" required></textarea>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn bg-gradient-dark w-100">Send Message</button>
+                </div>
+              </div>
+              <br>
+              <h6 style="display: {% if post == '1' %} inline {% endif %} none ; color: green; " >Your message is sent!</h6>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</section>
+  
+    
+{% endblock content %}
