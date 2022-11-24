@@ -1,0 +1,52 @@
+@import url('https://fonts.google.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
+.active {
+    color:rgba(174, 217, 255, 0.979) !important;
+}
+
+
+
+.about {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
+}
+
+.frame {
+  width: 300px;
+  height: 250px;
+  border: 3px solid #ccc;
+  background: #eee;
+  margin: auto;
+  padding: 15px 10px;
+}
+
+
+.titleabout {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Roboto Slab', serif;
+}
+
+.about2 {
+    font-size: 25px;
+    font-weight:lighter;
+}
+
+.about3 {
+    font-size: 30px;
+    font-weight:lighter;
+}
+
+.btn-1{
+    width: 200px;
+    height: 200x;
+    border: none;
+    color: black;
+    background-color: #13705e;
+    border-radius: 4px;
+    letter-spacing: 4px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-herif;
+}

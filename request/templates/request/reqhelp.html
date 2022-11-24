@@ -1,0 +1,93 @@
+{% extends 'request/main.html' %}
+
+{% block content %}
+<script onload="update()" src="/static/js/main.js"></script>
+
+<section>
+    
+    <div class="container py-4" style="margin-top: 15px;" >
+      <div class="row">
+        <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
+          
+          <h3 style="margin-top: 0px; margin-right: 20px; text-align: center; font-size: 35px; font-weight: bold; font-family: 'Roboto Slab', serif; ">Choose a Subject</h3>
+
+          <div class="card-body" id="allofthem">
+              
+            <div style="input-group" >
+
+              <div >
+                <b>Grade</b>
+                <div class="input-group">
+                  <img src onerror='update()'>
+                    <select name="grade" class="custom-select" style="max-width:35%;" id="grade" onchange="update()" required>
+                      <option value="8">Prep</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                    </select>
+                </div>
+              </div>
+              
+              <div>
+                <b>Lessons</b>
+                <div class="input-group">
+                    <select name="lessons" style="max-width:35%;" class="custom-select" id="lessons" required>
+                          
+                      <script>
+                        function update() {
+                          var select = document.getElementById('grade');
+                          var value = select.options[select.selectedIndex].value;
+                                  
+                          const prep = ['Mathematic', 'English', 'Science', 'Turkish']
+                          const grade9 = ['Mathematic', 'Chemistry', 'Physics', 'Biology', 'English', 'Turkish' ,'History', 'Geography']
+                          const grade10 = ['Mathematic', 'Chemistry', 'Physics', 'Biology', 'English', 'Turkish' ,'History', 'Geography']
+                          const grade11 = ['AP Calculus AB', 'AP Physics 1', 'AP Chemistry', 'AP Biology']
+                          var options_str = "";
+                              
+                          if (value == 8){
+                            prep.forEach(function(lesson){
+                                options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                          });
+                          } else if (value == 9){
+                            grade9.forEach(function(lesson){
+                            options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                          });
+                          } else if (value == 10) {
+                            grade10.forEach(function(lesson){
+                            options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                          });
+                          } else if (value == 11) {
+                            grade11.forEach(function(lesson){
+                            options_str += '<option value ="' + lesson + '">' + lesson + '</option>'
+                            });
+                          }
+                          var lesson_str = document.getElementById('lessons');
+                          lesson_str.innerHTML = options_str;
+                        }
+                                
+                        </script>
+                    </select>
+                </div>
+              </div>
+
+              
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12" style="text-align: center; ">
+                <button onclick="fetchData()" class="btn-1" style="margin-right: 14px; color: ghostwhite; font-weight:bold;">Search</button>
+              </div>
+            </div>
+            <br>
+            <h6 style="display: {% if post == '1' %} inline {% endif %} none ; color: green; " >Your message is sent!</h6>
+
+            <div id="erenn">
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock content %}
