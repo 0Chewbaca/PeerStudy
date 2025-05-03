@@ -136,6 +136,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
-MAILJET_API_KEY = '79b5dd25d511db0bafa75f0687020f28'
-MAILJET_API_SECRET = '5c562ecc5c13776df38c0cc1b4de532b'
+MAILJET_API_KEY = '-'
+MAILJET_API_SECRET = '-'
 EMAIL_USE_TLS = True
